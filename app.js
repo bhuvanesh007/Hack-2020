@@ -22,8 +22,8 @@ var transporter = nodemailer.createTransport({
     port: 465,
   service: 'gmail',
   auth: {
-    user: "hack2020event@gmail.com",
-    pass:'bhuvanesh007'
+    user: "mail@gmail.com",
+    pass:'password'
   }
 });
 app.set('view engine', 'ejs');
@@ -39,21 +39,11 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-/*const storage = multer.diskStorage({
-  destination: './public/uploads/',
-  filename: function(req, file, cb){
-    cb(null,file.fieldname + '-' + Date.now() + ".jpg");
-  }
-});
 
-const upload = multer({
-  storage: storage
-}).single('myimage');*/
-//var upload = multer({dest: 'public/uploads/'})
 cloudinary.config({
-  cloud_name: 'da8ygcsci',
-  api_key:  '742433721973165',
-  api_secret: 'gY8psy31OkBIswBf3DUf8dEBBFM'
+  cloud_name: '',
+  api_key:  '',
+  api_secret: ''
 });
 mongoose.connect("mongodb+srv://bhuvan:bhuvanesh007@cluster0-lzpan.mongodb.net/Eventregistration",{ useNewUrlParser: true , useUnifiedTopology: true,useFindAndModify:false  });
 mongoose.set("useCreateIndex", true);
@@ -148,7 +138,7 @@ app.post("/register",function(req,res){
           }
           else{
             var mailOptions = {
-              from: 'hack-2020@gmail.com',
+              from: 'name@gmail.com',
               to: req.body.email,
               subject: "no-reply Hack-2020",
               text: `Thank you for register in Hack2020
@@ -484,7 +474,7 @@ app.get("/query/:queryno", function(req,res){
 app.post("/replymail",function(req,res){
 
   var mailOptions = {
-    from: 'bhuvaneshraja113@gmail.com',
+    from: 'name@gmail.com',
     to: req.body.toemail,
     subject: req.body.subject,
     text: req.body.reply
